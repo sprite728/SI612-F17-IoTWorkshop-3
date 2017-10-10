@@ -12,25 +12,25 @@ int BlackColor = display.Color565(0, 0, 0);
 void setup() {
   Serial.begin(9600); //ADD THIS LINE
   display.initR(INITR_GREENTAB);
+  Particle.function("face", setFace);
+}
+
+int setFace(String face) {
+  if(face == "idle") {
+    drawIdleFace();
+  } else if (face == "misch") {
+    drawMischievousFace();
+  } else if (face == "happy"){
+    drawHappyFace();
+  } else if (face == "rain") {
+    drawRainFace();
+  } else {
+    drawIdleFace();
+  }
 }
 
 void loop() {
-  String emotion = "";
-  while(Serial.available() > 0) {
-    char c = Serial.read();
-    if( c == '\n') {
-      break;
-    }
-    emotion.concat(c);
-  }
 
-  if(emotion == "idle") {
-    drawIdleFace();
-  } else if (emotion == "misch") {
-    drawMischievousFace();
-  } else if (emotion == "happy"){
-    drawHappyFace();
-  }
 }
 
 void drawIdleFace() {
@@ -51,4 +51,12 @@ void drawHappyFace() {
   display.fillRoundRect(67, 30, 40, 20, 8, COLOR_CYAN);
   display.fillCircle(38, 59, 23, BlackColor);
   display.fillCircle(87, 59, 23, BlackColor);
+}
+
+void drawRainFace() {
+  // Design your own rainning face ...
+  display.fillScreen(BlackColor);
+  display.setCursor(5, 5);
+  display.setTextSize(1);
+  display.print("It's rainning!");
 }

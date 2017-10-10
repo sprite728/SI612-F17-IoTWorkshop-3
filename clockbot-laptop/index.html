@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
-    <title>SI612 IoT Workshop 3</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+        <title>SI612 IoT Workshop 3</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="./app.css">
     </head>
-  <body>
-    <div class="container">
-        <div class="row">
-            <h1>Wizard of Oz</h1>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1>Wizard of Oz</h1>
+            </div>
+            <!-- UI for robot face WoZ -->
+            <div class="row">
+                <button id="happy">Happy</button>
+                <button id="idle">Idle</button>
+                <button id="mischievous">Mischievious</button>
+            </div>
+
+            <!-- UI for speech synthesis WoZ -->
+            <div class="row">
+                <input type="text" class="form-control" id="speech">
+                <button id="speak">Speak</button>
+            </div>
+            
+            <!-- Debugging UI for face recognition -->
+            <div class="row wrapper">
+                <video id="video" width="400" height="300" preload autoplay loop muted></video>
+                <canvas id="canvas" width="400" height="300"></canvas>
+            </div>
         </div>
-        <div class="row">
-            <button id="happy">Happy</button>
-            <button id="idle">Idle</button>
-            <button id="mischievous">Mischievious</button>
-        </div>
-        <div class="row">
-            <input type="text" class="form-control" id="speech">
-            <button id="speak">Speak</button>
-        </div>
-    </div>
-  </body>
+    </body>
+
     <!-- jQuery  -->
     <script
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
+
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
         crossorigin="anonymous">
     </script>
+
     <!-- Particle -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/particle-api-js/5/particle.min.js">
     </script>
+
+    <!-- Tracking.js -->
+    <script type="text/javascript" src="./lib/tracking-js/tracking.js"></script>
+    <script type="text/javascript" src="./lib/tracking-js/data/face-min.js"></script>
+
     <!-- AR.js -->
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <!-- Decided not to teach AR marker detection in this workshop. -->
+    <!-- <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script> -->
+    <!-- <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script> -->
+
     <!-- Our code -->
     <script type="text/javascript" src="./app.js"></script>
 </html>
